@@ -5,6 +5,7 @@ const geocode = require("./utils/geocode");
 const weather = require("./utils/weather");
 
 const app = express();
+const port = process.env.PORT || 3000;
 
 //Define paths for express configs
 const publicPath = path.join(__dirname, '../public');
@@ -19,8 +20,8 @@ app.set('view engine', 'hbs');
 app.set('views', viewsPath);
 hbs.registerPartials(partialsPath)
 
-app.listen(3000, () => {
-    console.log('Server is up');
+app.listen(port, () => {
+    console.log(`Server is up on port ${port}`);
 })
 
 app.get('', (req, res) => {

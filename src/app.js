@@ -58,11 +58,11 @@ app.get('/weather', (req, res) => {
             if (weatherError) {
                 return res.send({error:weatherError});
             }
-            const {temperature, precip, weather_descriptions} = weather;
+            const {temperature, precip, weather_descriptions, wind_speed, wind_dir} = weather;
             return res.send({
                 address: req.query.address,
                 location,
-                forecast: `${weather_descriptions[0]}. It is currently ${temperature} degrees outside. The chance of rain is ${precip}%`
+                forecast: `${weather_descriptions[0]}. It is currently ${temperature} degrees outside. The chance of rain is ${precip}%. The wind speed is ${wind_speed} m/s with ${wind_dir} direction.`
             });
 
         });
